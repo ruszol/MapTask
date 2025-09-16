@@ -6,11 +6,7 @@ public class MapTask {
     public static <T>Map<T, Integer> arrToMap (T[] arr) {
         Map<T, Integer> testMap = new HashMap<>();
         for (T a : arr) {
-            if(testMap.containsKey(a)) {
-                testMap.put(a, testMap.get(a)+1);
-            }else  {
-                testMap.put(a,1);
-            }
+            testMap.merge(a, 1, Integer::sum);
         }
         return testMap;
     }
